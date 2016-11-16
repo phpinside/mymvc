@@ -13,6 +13,7 @@
 ---------------------------------
  1. git clone https://github.com/phpinside/mymvc.git mymvc
  2. 编辑 Apache下的httpd-vhost.conf文件，添加如下内容：
+ 
  **注意以下的目录改成自己对应的本地目录！**
  
  ```apache
