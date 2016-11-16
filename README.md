@@ -14,6 +14,7 @@
  2. 编辑 Apache下的httpd-vhost.conf文件，添加如下内容：
  **注意以下的目录改成自己对应的本地目录！**
  
+ ```apache
  
 <Directory "D:/demos/myMVC/app/web">
      Options Indexes FollowSymLinks Includes ExecCGI
@@ -28,7 +29,7 @@
      ErrorLog "logs/my.mvc.com.com-error.log"
      CustomLog "logs/my.mvc.com-access.log" common
  </VirtualHost>
- 
+ ```
  
 3. 启动Apache和MySQL
 4. 在MySQL中创建一个数据库mydb，用户名：mymvc， 密码：123456。
