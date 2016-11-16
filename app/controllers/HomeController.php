@@ -40,12 +40,16 @@ class HomeController extends BaseController
     public function migrate()
     {
         $migrator = new \Pheasant\Migrate\Migrator();
+
         $migrator->initialize(ToDo::schema(), 'todo');
-        echo 'migrate author done! <br>';
+        echo 'migrate  done! <br>';
+
 //        $migrator->initialize(Post::schema(), 'post');
-//        $migrator->initialize(Author::schema(), 'author');
 //        echo 'migrate post done! <br>';
+//
+//        $migrator->initialize(Author::schema(), 'author');
 //        echo 'migrate author done! <br>';
+
     }
 
     public function show()
