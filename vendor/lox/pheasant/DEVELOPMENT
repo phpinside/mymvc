@@ -1,0 +1,9 @@
+Running Tests
+=============
+
+```bash
+composer install --dev
+mysql -e 'create database pheasanttest;'
+phpunit
+```
+
