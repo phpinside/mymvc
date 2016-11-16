@@ -14,16 +14,18 @@ use Latte\Engine;
 class BaseController
 {
     private $latte;
+    private $config;
 
     public function __construct()
     {
+        $this->loadConfig();
         $this->initDb();
         $this->initTpl();
     }
 
     public function initDb()
     {
-        Pheasant::setup('mysql://mymvc:123456@localhost:3306/mydb');
+        Pheasant::setup($this->config['dsn']);
     }
 
     public function initTpl()
@@ -34,6 +36,11 @@ class BaseController
         $set->addMacro('url', function ($node, $writer) {
             return $writer->write('echo "' . SITE_URL . '%node.args' . '"');
         });
+    }
+
+    public function loadConfig()
+    {
+        $this->config = require __DIR__ . '/../config/base.php';
     }
 
     public function render($name, array $params = [], $block = NULL)

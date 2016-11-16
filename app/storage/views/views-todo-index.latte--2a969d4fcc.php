@@ -39,31 +39,31 @@ class Template2a969d4fcc extends Latte\Runtime\Template
 	{
 		extract($_args);
 ?>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-10 col-md-offset-1">
-                <div class="panel panel-default">
-                    <div class="panel-heading">所有事项</div>
-                    <div class="panel-body">
+<div class="container">
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            <div class="panel panel-default">
+                <div class="panel-heading">所有事项</div>
+                <div class="panel-body">
 
 
-                        <form class="form-inline" role="form" action="<?php echo "http://my.mvc.com/todo/store" ?>" method="post">
-                            <div class="form-group">
-                                <label for="title" class="sr-only">请输入事项</label>
-                                <input type="input" class="form-control" name="title" id="title" placeholder="请输入事项">
-                            </div>
-                            <button type="submit" class="btn btn-default">新增</button>
-                        </form>
+                    <form class="form-inline" role="form" action="<?php echo "http://my.mvc.com/todo/store" ?>" method="post">
+                        <div class="form-group">
+                            <label for="title" class="sr-only">请输入事项</label>
+                            <input type="input" class="form-control" name="title" id="title" placeholder="请输入事项">
+                        </div>
+                        <button type="submit" class="btn btn-default">新增</button>
+                    </form>
 
 
 <?php
 		$iterations = 0;
 		foreach ($todos as $todo) {
 ?>
-                            <div class="row">
-                                <hr>
-                                <div class="col-md-8">
-                                    <h4><?php
+                    <div class="row">
+                        <hr>
+                        <div class="col-md-8">
+                            <h4><?php
 			if ($this->global->ifs[] = ($todo->status)) {
 				?><s><?php
 			}
@@ -73,24 +73,24 @@ class Template2a969d4fcc extends Latte\Runtime\Template
 			}
 ?>
 </h4>
-                                </div>
-                                <div class="col-md-4">
-                                    <a href="<?php echo "http://my.mvc.com/todo/edit/$todo->id" ?>" class="btn btn-success">完成</a>
-                                    <form action="<?php echo "http://my.mvc.com/todo/destroy/$todo->id" ?>" method="POST" style="display: inline;">
-                                        <button type="submit" class="btn btn-danger">删除</button>
-                                    </form>
-                                </div>
-                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <a href="<?php echo "http://my.mvc.com/todo/edit/$todo->id" ?>" class="btn btn-success">完成</a>
+                            <form action="<?php echo "http://my.mvc.com/todo/destroy/$todo->id" ?>" method="POST" style="display: inline;">
+                                <button type="submit" class="btn btn-danger">删除</button>
+                            </form>
+                        </div>
+                    </div>
 <?php
 			$iterations++;
 		}
 ?>
 
-                    </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 <?php
 	}
 

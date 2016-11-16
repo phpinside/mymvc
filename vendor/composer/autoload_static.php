@@ -11,20 +11,12 @@ class ComposerStaticInit86a70a4492ea4b649ef4c1864b9d9e27
         array (
             'app\\' => 4,
         ),
-        'N' => 
-        array (
-            'Noodlehaus\\' => 11,
-        ),
     );
 
     public static $prefixDirsPsr4 = array (
         'app\\' => 
         array (
             0 => __DIR__ . '/../..' . '/app',
-        ),
-        'Noodlehaus\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/hassankhan/config/src',
         ),
     );
 
