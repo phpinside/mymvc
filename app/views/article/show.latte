@@ -1,0 +1,5 @@
+<ul n:if="$articles">
+    {foreach $articles as $article}
+    <li id="article-{$iterator->counter}">{$article['title']} {$article['Author']['fullname']|upper}   </li>
+    {/foreach}
+</ul>

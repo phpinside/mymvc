@@ -2,6 +2,9 @@
 
 if (version_compare(PHP_VERSION, '5.6.0', '<')) die('require PHP > 5.6.0 !');
 
+define('SITE_URL','http://'.$_SERVER['HTTP_HOST'].substr($_SERVER['PHP_SELF'],0,-10) );
+
+
 require __DIR__ . '/../../vendor/autoload.php';
 
 

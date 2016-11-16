@@ -9,7 +9,7 @@
 
 namespace app\models;
 
-use Pheasant\Types;
+use \Pheasant\Types;
 
 class Post extends BaseModel
 {
@@ -19,7 +19,7 @@ class Post extends BaseModel
             'postid'   => new Types\SequenceType(),
             'title'    => new Types\StringType(255, 'required'),
             'subtitle' => new Types\StringType(255),
-            'status'   => new Types\EnumType(array('closed','open')),
+            'status'   => new Types\SetType(array('closed','open')),
             'authorid' => new Types\IntegerType(11),
         );
     }

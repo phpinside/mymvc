@@ -7,8 +7,6 @@ are supported, with the emphasis being on scalability and performance over compl
 Pheasant doesn't attempt to abstract the database and makes heavy use of
 MySQL/Innodb features.
 
-More details available at http://getpheasant.com
-
 Status of Development
 ---------------------------------
 
@@ -20,6 +18,10 @@ Installing
 ---------------------------------
 
 Easiest way is to install via composer http://packagist.org/packages/lox/pheasant.
+
+```sh
+composer require lox/pheasant
+```
 
 Persisting Objects
 ---------------------------------
@@ -39,11 +41,11 @@ class Post extends DomainObject
   public function properties()
   {
     return array(
-      'postid'   => new Types\Sequence(),
-      'title'    => new Types\String(255, 'required'),
-      'subtitle' => new Types\String(255),
-      'status'   => new Types\Enum(array('closed','open')),
-      'authorid' => new Types\Integer(11),
+      'postid'   => new Types\SequenceType(),
+      'title'    => new Types\StringType(255, 'required'),
+      'subtitle' => new Types\StringType(255),
+      'status'   => new Types\EnumType(array('closed','open')),
+      'authorid' => new Types\IntegerType(11),
       );
   }
 
@@ -60,8 +62,8 @@ class Author extends DomainObject
   public function properties()
   {
     return array(
-      'authorid' => new Types\Sequence(),
-      'fullname' => new Types\String(255, 'required')
+      'authorid' => new Types\SequenceType(),
+      'fullname' => new Types\StringType(255, 'required')
     );
   }
 
@@ -111,6 +113,15 @@ $users = User::one('firstname = ?', 'frank');
 // a user by primary key
 $user = User::byId(1);
 
+// all comments by a user (if user hasmany comment)
+$comments = User::byId(1)->Comment;
+
+// to prevent the n+1 query issue, eager load the relation:
+$users = User::all()->includes(['Comment']); // $users[0]->Comment will not hit db
+
+// eager loading also has support for eager loading sub-relations
+$users = User::all()->includes(['Comment' => [ 'Like', ]]);
+
 ```
 
 Collection Scoping
@@ -155,9 +166,9 @@ class Post extends DomainObject
   public function properties()
   {
     return array(
-      'postid'      => new Types\Sequence(),
-      'title'       => new Types\String(255),
-      'timecreated' => new Types\Integer(11),
+      'postid'      => new Types\SequenceType(),
+      'title'       => new Types\StringType(255),
+      'timecreated' => new Types\IntegerType(11),
       ));
   }
 

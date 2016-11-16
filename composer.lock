@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "e5fef4014e58de893e8a95ca340d7160",
-    "content-hash": "2d305121ab4d5783fc1d11544a72a7ef",
+    "hash": "23f781539443078c1097cff3cbf9c938",
+    "content-hash": "68081bd3910b3a35ebfb9a7988db1e35",
     "packages": [
         {
             "name": "altorouter/altorouter",
@@ -187,16 +187,16 @@
         },
         {
             "name": "lox/pheasant",
-            "version": "v1.3.2",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/lox/pheasant.git",
-                "reference": "1bd7ee448f34144da71b843c622e5c3896b4a62d"
+                "reference": "b51c5ff325b5868b8e36af532f2b7f0133f1d9d2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://packagist.phpcomposer.com/files/lox/pheasant/1bd7ee448f34144da71b843c622e5c3896b4a62d.zip",
-                "reference": "1bd7ee448f34144da71b843c622e5c3896b4a62d",
+                "url": "https://packagist.phpcomposer.com/files/lox/pheasant/b51c5ff325b5868b8e36af532f2b7f0133f1d9d2.zip",
+                "reference": "b51c5ff325b5868b8e36af532f2b7f0133f1d9d2",
                 "shasum": ""
             },
             "require": {
@@ -238,13 +238,15 @@
                 "mysql",
                 "orm"
             ],
-            "time": "2015-05-05 09:28:58"
+            "time": "2016-05-07 18:06:45"
         }
     ],
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "lox/pheasant": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],

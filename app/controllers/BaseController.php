@@ -8,6 +8,8 @@
 
 namespace app\controllers;
 
+use Pheasant;
+use Latte\Engine;
 
 class BaseController
 {
@@ -15,7 +17,8 @@ class BaseController
 
     public function __construct()
     {
-        // $this->middleware('auth');
+        $this->initDb();
+        $this->initTpl();
     }
 
     public function initDb()
@@ -25,25 +28,26 @@ class BaseController
 
     public function initTpl()
     {
-        $this->latte = new \Latte\Engine();
+        $this->latte = new Engine();
         $this->latte->setTempDirectory(__DIR__ . '/../storage/views');
+        $set = new \Latte\Macros\MacroSet($this->latte->getCompiler());
+        $set->addMacro('url', function ($node, $writer) {
+            return $writer->write('echo "' . SITE_URL . '%node.args' . '"');
+        });
     }
 
     public function render($name, array $params = [], $block = NULL)
     {
         $params['sitename'] = 'sijiaomao mvc framework';
-        $this->latte->render($name, $params, $block);
+        $tplFile = __DIR__ . '/../views/' . $name . '.latte';
+        $this->latte->render($tplFile, $params, $block);
     }
 
-    public static function __callStatic($method, $args)
+    public function redirect($name)
     {
-        $instance = static::getFacadeRoot();
-
-        if (! $instance) {
-            throw new RuntimeException('A facade root has not been set.');
-        }
-
-        return $instance->$method(...$args);
+        header('Location:' . SITE_URL . '/' . $name);
+        exit;
     }
+
 
 }

@@ -7,7 +7,7 @@
  */
 namespace app\models;
 
-use Pheasant\Types;
+use \Pheasant\Types;
 
 class Author extends BaseModel
 {
