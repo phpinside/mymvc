@@ -13,8 +13,8 @@
 
 // map homepage
 $router->map('GET', '/', function () {
-
-    echo 'Hello';
+    echo '<h1>'.date('Y-m-d H:i:s').'   Hello, MyMVC ! ';
+    echo '<br><a href="/todo/index">去看看示例</a></h1>';
 });
 
 // map users details page

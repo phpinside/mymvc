@@ -2,16 +2,19 @@
 
 if (version_compare(PHP_VERSION, '5.6.0', '<')) die('require PHP > 5.6.0 !');
 
-define('SITE_URL','http://'.$_SERVER['HTTP_HOST'].substr($_SERVER['PHP_SELF'],0,-10) );
+define('APP_ROOT', dirname(__DIR__));
+define('SITE_URL', 'http://' . $_SERVER['HTTP_HOST'] . substr($_SERVER['PHP_SELF'], 0, -10));
+
+date_default_timezone_set('Asia/Shanghai');
 
 
-require __DIR__ . '/../../vendor/autoload.php';
+require APP_ROOT . '/../vendor/autoload.php';
 
 
 $router = new AltoRouter();
 
 // load map routes
-require __DIR__ . '/../config/routes.php';
+require APP_ROOT . '/config/routes.php';
 # to see http://altorouter.com/usage/processing-requests.html
 # to see https://github.com/dannyvankooten/AltoRouter
 # to compare with https://github.com/bramus/router
@@ -25,7 +28,7 @@ $router->map('GET|POST', '/[a:controllerName]/[a:actionName]', function ($contro
 
 $router->map('GET|POST', '/[a:controllerName]/[a:actionName]/?[**:]', function ($controllerName, $actionName) {
     $args = explode('/', $_SERVER['REQUEST_URI']);
-    $args  =  array_slice ( $args , 3 );
+    $args = array_slice($args, 3);
     runAction($controllerName, $actionName, $args);
 });
 

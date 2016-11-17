@@ -31,22 +31,23 @@ class BaseController
     public function initTpl()
     {
         $this->latte = new Engine();
-        $this->latte->setTempDirectory(__DIR__ . '/../storage/views');
+        $this->latte->setTempDirectory(APP_ROOT . '/storage/views');
         $set = new \Latte\Macros\MacroSet($this->latte->getCompiler());
         $set->addMacro('url', function ($node, $writer) {
             return $writer->write('echo "' . SITE_URL . '%node.args' . '"');
         });
+        $this->latte->
     }
 
     public function loadConfig()
     {
-        $this->config = require __DIR__ . '/../config/base.php';
+        $this->config = require APP_ROOT . '/config/base.php';
     }
 
     public function render($name, array $params = [], $block = NULL)
     {
         $params['sitename'] = 'sijiaomao mvc framework';
-        $tplFile = __DIR__ . '/../views/' . $name . '.latte';
+        $tplFile = APP_ROOT . '/views/' . $name . '.latte';
         $this->latte->render($tplFile, $params, $block);
     }
 

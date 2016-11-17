@@ -99,7 +99,7 @@ class DomainObjectTest extends \Pheasant\Tests\MysqlTestCase
         // try non-saved objects
         $another = new Animal();
         $another->unknown;
-        $instance->save();
+        $another->save();
     }
 
     public function testInitializeDefaults()
