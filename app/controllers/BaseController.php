@@ -36,7 +36,6 @@ class BaseController
         $set->addMacro('url', function ($node, $writer) {
             return $writer->write('echo "' . SITE_URL . '%node.args' . '"');
         });
-        $this->latte->
     }
 
     public function loadConfig()

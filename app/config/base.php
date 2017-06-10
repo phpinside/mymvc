@@ -8,6 +8,6 @@
 return [
 
     'sitename' => 'sijiaomao framework',
-    'dsn' => 'mysql://mymvc:123456@localhost:3306/mydb',
+    'dsn' => 'mysql://root:password@localhost:3306/mydb',
 
 ];
